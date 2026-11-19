@@ -315739,7 +315739,7 @@
       "dorm": 3,
       "banos": 3,
       "precio": 415000,
-      "estado": "RESERVADA",
+      "estado": "LIBRE",
       "garaje": 16,
       "sotano_garaje": "S1",
       "trastero": 28
@@ -317125,7 +317125,7 @@
       "dorm": 2,
       "banos": 2,
       "precio": 305000,
-      "estado": "RESERVADA",
+      "estado": "LIBRE",
       "garaje": 23,
       "sotano_garaje": "S1",
       "trastero": 33
