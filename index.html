@@ -2889,7 +2889,7 @@
       const tip = $('#tip');
       canvas.addEventListener('pointermove', ev => {
         if (ev.pointerType !== 'mouse' || ev.buttons) return;
-        const u = pickAt(ev); hover = u; if (!selected && u !== hl) highlight(u);
+        const u = SOT.cur ? null : pickAt(ev); hover = u; if (!selected && u !== hl) highlight(u);
         if (u) {
           const r = stage.getBoundingClientRect(); tip.style.left = (ev.clientX - r.left) + 'px'; tip.style.top = (ev.clientY - r.top) + 'px';
           tip.innerHTML = `<b>${u.id}</b>${u.dorm} dorm · ${fmtM2(u.su)} m² · ${u.estado === 'LIBRE' ? fmtEUR(u.precio) : 'Reservada'}`; tip.style.opacity = 1; canvas.style.cursor = 'pointer';
@@ -2901,8 +2901,80 @@
       canvas.addEventListener('pointerdown', ev => { downAt = [ev.clientX, ev.clientY]; idleKick(); });
       canvas.addEventListener('pointerup', ev => {
         if (!downAt) return; const d = Math.hypot(ev.clientX - downAt[0], ev.clientY - downAt[1]); downAt = null; if (d > 6) return;
-        const u = pickAt(ev); if (u) select(u.id);
+        const u = SOT.cur ? null : pickAt(ev); if (u) select(u.id);
       });
+
+      /* ================= Sótanos: plazas de garaje y trasteros ================= */
+      const SOT = { root: null, levels: {}, cur: null, hidden: [], bays: [], center: [0, 0] };
+      const SOT_ORDER = [null, 'S1', 'S2'];
+      const sotBtn = document.createElement('button');
+      sotBtn.id = 'sotBtn'; sotBtn.textContent = 'Sótano'; sotBtn.setAttribute('aria-pressed', 'false');
+      $('#galBtn').after(sotBtn);
+      (function buildSotano() {
+        const S = D.sotano; if (!S) { sotBtn.hidden = true; return; }
+        const [x0, y0, x1, y1] = D.pb.plot;
+        const LV = { S1: -3.4, S2: -6.8 };
+        const root = new THREE.Group(); root.rotation.x = -Math.PI / 2; root.visible = false; scene.add(root); SOT.root = root;
+        const glass = new THREE.Mesh(new THREE.PlaneGeometry(900, 900), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .08, depthWrite: false }));
+        root.add(glass);
+        const M = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: .9, metalness: 0 }, o));
+        const mSlab = M(0x9c9c95), mCol = M(0xb8b7ae), mFree = M(0x22C46B, { roughness: .5 }), mTaken = M(0x7a8190, { roughness: .7 }), mNone = M(0x3f4650), mStor = M(0xd9c49c);
+        const takenBy = new Map(UNITS.filter(u => u.garaje != null).map(u => [String(u.garaje), u]));
+        const libres = new Set((D.garajes_libres || []).map(o => String(o.garaje)));
+        SOT.center = [(x0 + x1) / 2 - CX, (y0 + y1) / 2 - CY];
+        for (const key of ['S1', 'S2']) {
+          const z = LV[key], L = S[key], lg = new THREE.Group(); lg.visible = false; root.add(lg); SOT.levels[key] = lg;
+          const box = (w, d, h, m, x, y, zb, data) => { const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, d, h), m); mesh.position.set(x - CX, y - CY, zb + h / 2); mesh.receiveShadow = true; lg.add(mesh); if (data) { mesh.userData = data; SOT.bays.push(mesh); } return mesh; };
+          box(x1 - x0, y1 - y0, .35, mSlab, (x0 + x1) / 2, (y0 + y1) / 2, z - .35);
+          for (const [d, x, y] of L.columnas) {
+            const r = d / 2, cyl = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 2.8, 20), mCol);
+            cyl.rotation.x = Math.PI / 2; cyl.position.set(x - CX, y - CY, z + 1.4); lg.add(cyl);
+          }
+          for (const [n, x, y] of L.garajes) {
+            const k = String(n), u = takenBy.get(k), free = libres.has(k);
+            const data = { tipo: 'garaje', n: k, estado: u ? 'asignado' : free ? 'libre' : 'sin datos', u };
+            box(5, 2.5, .04, free ? mFree : u ? mTaken : mNone, x, y, z, data);
+          }
+          for (const [m2, x, y] of L.trasteros) box(2.2, 2.2, 2.2, mStor, x, y, z, { tipo: 'trastero', m2 });
+        }
+      })();
+      const sotRay = new THREE.Raycaster();
+      function sotHit(ev) {
+        const r = canvas.getBoundingClientRect();
+        sotRay.setFromCamera(new THREE.Vector2(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1), camera);
+        const visible = SOT.bays.filter(m => m.parent && m.parent.visible);
+        const h = sotRay.intersectObjects(visible, false)[0];
+        return h ? h.object.userData : null;
+      }
+      function sotTip(ev, d) {
+        const r = stage.getBoundingClientRect(); tip.style.left = (ev.clientX - r.left) + 'px'; tip.style.top = (ev.clientY - r.top) + 'px';
+        tip.innerHTML = d.tipo === 'trastero'
+          ? `<b>Trastero</b>${fmtM2(d.m2)} m² · sin número en el plano`
+          : `<b>Garaje ${d.n}</b>${d.estado === 'asignado' ? 'asignado a ' + d.u.id : d.estado === 'libre' ? 'libre' : 'sin datos'}`;
+        tip.style.opacity = 1; canvas.style.cursor = 'pointer';
+      }
+      function setSotano(lvl) {
+        if (!SOT.root) return;
+        SOT.cur = lvl;
+        world.visible = !lvl;
+        SOT.root.visible = !!lvl;
+        document.getElementById('tags').style.display = lvl ? 'none' : '';
+        for (const k in SOT.levels) SOT.levels[k].visible = k === lvl;
+        sotBtn.setAttribute('aria-pressed', String(!!lvl));
+        sotBtn.textContent = lvl ? (lvl === 'S1' ? 'Sótano −1 · siguiente' : 'Sótano −2 · salir') : 'Sótano';
+        tip.style.opacity = 0; highlight(null);
+        if (lvl) {
+          const c = SOT.root.localToWorld(new THREE.Vector3(SOT.center[0], SOT.center[1], lvl === 'S1' ? -3.4 : -6.8));
+          flyTo(c.clone().add(new THREE.Vector3(40, 52, 58)), c);
+        } else flyTo(homePos(), HOME_T);
+        needsRender = true;
+      }
+      sotBtn.onclick = () => setSotano(SOT_ORDER[(SOT_ORDER.indexOf(SOT.cur) + 1) % SOT_ORDER.length]);
+      canvas.addEventListener('pointermove', ev => {
+        if (!SOT.cur || ev.buttons || ev.pointerType !== 'mouse') return;
+        const d = sotHit(ev); if (d) sotTip(ev, d); else { tip.style.opacity = 0; canvas.style.cursor = ''; }
+      });
+      canvas.addEventListener('click', ev => { if (!SOT.cur) return; const d = sotHit(ev); if (d) sotTip(ev, d); });
 
       /* ================= Camera tween ================= */
       let tween = null;
