@@ -315519,7 +315519,7 @@
       "dorm": 3,
       "banos": 3,
       "precio": 405000,
-      "estado": "RESERVADA",
+      "estado": "LIBRE",
       "garaje": 5,
       "sotano_garaje": "S1",
       "trastero": 4
@@ -317176,49 +317176,221 @@
     }
   ],
   "garajes_libres": [
-    { "garaje": 1, "sotano_garaje": "S1", "zona": "Zona 1A" },
-    { "garaje": 47, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 48, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 52, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 53, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 54, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 55, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 56, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 57, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 58, "sotano_garaje": "S1", "zona": "Zona 1B" },
-    { "garaje": 67, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 74, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 75, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 76, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 77, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 78, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 85, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 90, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 91, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 92, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 124, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 125, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 126, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 127, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 128, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 129, "sotano_garaje": "S2", "zona": "Zona 1A" },
-    { "garaje": 93, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 94, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 97, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 102, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 103, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 104, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 105, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 106, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 112, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 113, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 117, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 118, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 119, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 120, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 121, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 122, "sotano_garaje": "S2", "zona": "Zona 1B" },
-    { "garaje": 123, "sotano_garaje": "S2", "zona": "Zona 1B" }
+    {
+      "garaje": 1,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 47,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 48,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 52,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 53,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 54,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 55,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 56,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 57,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 58,
+      "sotano_garaje": "S1",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 67,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 74,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 75,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 76,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 77,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 78,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 85,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 90,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 91,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 92,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 124,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 125,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 126,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 127,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 128,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 129,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1A"
+    },
+    {
+      "garaje": 93,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 94,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 97,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 102,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 103,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 104,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 105,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 106,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 112,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 113,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 117,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 118,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 119,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 120,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 121,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 122,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    },
+    {
+      "garaje": 123,
+      "sotano_garaje": "S2",
+      "zona": "Zona 1B"
+    }
   ],
   "roof": {
     "v": [
