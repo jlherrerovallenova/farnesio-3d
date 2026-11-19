@@ -315431,7 +315431,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 153000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 68,
+      "sotano_garaje": "S2",
+      "trastero": 54
     },
     {
       "id": "1A-1B",
@@ -315450,7 +315453,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 153000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 73,
+      "sotano_garaje": "S2",
+      "trastero": 55
     },
     {
       "id": "1A-1C",
@@ -315469,7 +315475,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 240000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 20,
+      "sotano_garaje": "S1",
+      "trastero": 19
     },
     {
       "id": "1A-1D",
@@ -315488,7 +315497,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 240000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 27,
+      "sotano_garaje": "S1",
+      "trastero": 14
     },
     {
       "id": "1A-1E",
@@ -315507,7 +315519,10 @@
       "dorm": 3,
       "banos": 3,
       "precio": 405000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 5,
+      "sotano_garaje": "S1",
+      "trastero": 4
     },
     {
       "id": "1A-2A",
@@ -315526,7 +315541,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 155000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 69,
+      "sotano_garaje": "S2",
+      "trastero": 52
     },
     {
       "id": "1A-2B",
@@ -315545,7 +315563,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 155000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 72,
+      "sotano_garaje": "S2",
+      "trastero": 53
     },
     {
       "id": "1A-2C",
@@ -315564,7 +315585,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 240000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 21,
+      "sotano_garaje": "S1",
+      "trastero": 20
     },
     {
       "id": "1A-2D",
@@ -315583,7 +315607,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 240000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 26,
+      "sotano_garaje": "S1",
+      "trastero": 21
     },
     {
       "id": "1A-2E",
@@ -315602,7 +315629,10 @@
       "dorm": 3,
       "banos": 3,
       "precio": 415000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 17,
+      "sotano_garaje": "S1",
+      "trastero": 29
     },
     {
       "id": "1A-3A",
@@ -315621,7 +315651,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 158000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 131,
+      "sotano_garaje": "S2",
+      "trastero": 49
     },
     {
       "id": "1A-3B",
@@ -315640,7 +315673,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 158000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 130,
+      "sotano_garaje": "S2",
+      "trastero": 50
     },
     {
       "id": "1A-3C",
@@ -315659,7 +315695,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 245000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 25,
+      "sotano_garaje": "S1",
+      "trastero": 22
     },
     {
       "id": "1A-3D",
@@ -315678,7 +315717,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 245000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 2,
+      "sotano_garaje": "S1",
+      "trastero": 11
     },
     {
       "id": "1A-3E",
@@ -315697,7 +315739,10 @@
       "dorm": 3,
       "banos": 3,
       "precio": 415000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 16,
+      "sotano_garaje": "S1",
+      "trastero": 28
     },
     {
       "id": "1A-4A",
@@ -315716,7 +315761,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 163000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 70,
+      "sotano_garaje": "S2",
+      "trastero": 51
     },
     {
       "id": "1A-4B",
@@ -315735,7 +315783,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 160000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 71,
+      "sotano_garaje": "S2",
+      "trastero": 56
     },
     {
       "id": "1A-4C",
@@ -315754,7 +315805,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 270000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 3,
+      "sotano_garaje": "S1",
+      "trastero": 7
     },
     {
       "id": "1A-4D",
@@ -315773,7 +315827,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 270000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 8,
+      "sotano_garaje": "S1",
+      "trastero": 13
     },
     {
       "id": "1A-4E",
@@ -315792,7 +315849,10 @@
       "dorm": 3,
       "banos": 3,
       "precio": 395000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 15,
+      "sotano_garaje": "S1",
+      "trastero": 27
     },
     {
       "id": "1A-5A",
@@ -315811,7 +315871,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 163000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 81,
+      "sotano_garaje": "S2",
+      "trastero": 60
     },
     {
       "id": "1A-5B",
@@ -315830,7 +315893,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 160000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 82,
+      "sotano_garaje": "S2",
+      "trastero": 61
     },
     {
       "id": "1A-5C",
@@ -315849,7 +315915,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 290000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 6,
+      "sotano_garaje": "S1",
+      "trastero": 5
     },
     {
       "id": "1A-5D",
@@ -315868,7 +315937,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 265000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 7,
+      "sotano_garaje": "S1",
+      "trastero": 6
     },
     {
       "id": "1A-5E",
@@ -315887,7 +315959,10 @@
       "dorm": 3,
       "banos": 3,
       "precio": 395000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 14,
+      "sotano_garaje": "S1",
+      "trastero": 26
     },
     {
       "id": "1A-6A",
@@ -315906,7 +315981,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 163000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 79,
+      "sotano_garaje": "S2",
+      "trastero": 58
     },
     {
       "id": "1A-6B",
@@ -315925,7 +316003,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 160000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 80,
+      "sotano_garaje": "S2",
+      "trastero": 59
     },
     {
       "id": "1A-6C",
@@ -315944,7 +316025,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 290000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 12,
+      "sotano_garaje": "S1",
+      "trastero": 24
     },
     {
       "id": "1A-6D",
@@ -315963,7 +316047,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 290000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 11,
+      "sotano_garaje": "S1",
+      "trastero": 23
     },
     {
       "id": "1A-6E",
@@ -315982,7 +316069,10 @@
       "dorm": 3,
       "banos": 3,
       "precio": 395000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 13,
+      "sotano_garaje": "S1",
+      "trastero": 25
     },
     {
       "id": "1A-AA",
@@ -316001,7 +316091,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 285000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 10,
+      "sotano_garaje": "S1",
+      "trastero": 2
     },
     {
       "id": "1A-AB",
@@ -316020,7 +316113,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 305000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 9,
+      "sotano_garaje": "S1",
+      "trastero": 12
     },
     {
       "id": "1A-AC",
@@ -316039,7 +316135,10 @@
       "dorm": 3,
       "banos": 2,
       "precio": 400000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 4,
+      "sotano_garaje": "S1",
+      "trastero": 3
     },
     {
       "id": "1B-1A",
@@ -316058,7 +316157,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 235000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 100,
+      "sotano_garaje": "S2",
+      "trastero": 69
     },
     {
       "id": "1B-1B",
@@ -316077,7 +316179,10 @@
       "dorm": 3,
       "banos": 2,
       "precio": 340000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 45,
+      "sotano_garaje": "S1",
+      "trastero": 40
     },
     {
       "id": "1B-1C",
@@ -316096,7 +316201,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 235000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 28,
+      "sotano_garaje": "S1",
+      "trastero": 17
     },
     {
       "id": "1B-1D",
@@ -316115,7 +316223,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 225000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 38,
+      "sotano_garaje": "S1",
+      "trastero": 18
     },
     {
       "id": "1B-1E",
@@ -316134,7 +316245,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 160000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 116,
+      "sotano_garaje": "S2",
+      "trastero": 77
     },
     {
       "id": "1B-1F",
@@ -316153,7 +316267,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 155000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 86,
+      "sotano_garaje": "S2",
+      "trastero": 57
     },
     {
       "id": "1B-1G",
@@ -316172,7 +316289,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 155000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 89,
+      "sotano_garaje": "S2",
+      "trastero": 66
     },
     {
       "id": "1B-2A",
@@ -316191,7 +316311,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 235000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 84,
+      "sotano_garaje": "S2",
+      "trastero": 63
     },
     {
       "id": "1B-2B",
@@ -316210,7 +316333,10 @@
       "dorm": 3,
       "banos": 2,
       "precio": 340000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 30,
+      "sotano_garaje": "S1",
+      "trastero": 35
     },
     {
       "id": "1B-2C",
@@ -316229,7 +316355,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 250000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 29,
+      "sotano_garaje": "S1",
+      "trastero": 15
     },
     {
       "id": "1B-2D",
@@ -316248,7 +316377,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 250000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 32,
+      "sotano_garaje": "S1",
+      "trastero": 16
     },
     {
       "id": "1B-2E",
@@ -316267,7 +316399,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 165000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 109,
+      "sotano_garaje": "S2",
+      "trastero": 73
     },
     {
       "id": "1B-2F",
@@ -316286,7 +316421,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 157000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 98,
+      "sotano_garaje": "S2",
+      "trastero": 71
     },
     {
       "id": "1B-2G",
@@ -316305,7 +316443,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 160000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 107,
+      "sotano_garaje": "S2",
+      "trastero": 76
     },
     {
       "id": "1B-3A",
@@ -316324,7 +316465,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 235000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 41,
+      "sotano_garaje": "S1",
+      "trastero": 1
     },
     {
       "id": "1B-3B",
@@ -316343,7 +316487,10 @@
       "dorm": 3,
       "banos": 2,
       "precio": 365000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 36,
+      "sotano_garaje": "S1",
+      "trastero": 38
     },
     {
       "id": "1B-3C",
@@ -316362,7 +316509,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 260000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 51,
+      "sotano_garaje": "S1",
+      "trastero": 45
     },
     {
       "id": "1B-3D",
@@ -316381,7 +316531,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 260000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 24,
+      "sotano_garaje": "S1",
+      "trastero": 34
     },
     {
       "id": "1B-3E",
@@ -316400,7 +316553,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 165000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 96,
+      "sotano_garaje": "S2",
+      "trastero": 68
     },
     {
       "id": "1B-3F",
@@ -316419,7 +316575,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 180000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 114,
+      "sotano_garaje": "S2",
+      "trastero": 79
     },
     {
       "id": "1B-3G",
@@ -316438,7 +316597,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 160000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 115,
+      "sotano_garaje": "S2",
+      "trastero": 78
     },
     {
       "id": "1B-4A",
@@ -316457,7 +316619,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 250000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 40,
+      "sotano_garaje": "S1",
+      "trastero": 8
     },
     {
       "id": "1B-4B",
@@ -316476,7 +316641,10 @@
       "dorm": 3,
       "banos": 2,
       "precio": 345000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 31,
+      "sotano_garaje": "S1",
+      "trastero": 36
     },
     {
       "id": "1B-4C",
@@ -316495,7 +316663,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 280000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 49,
+      "sotano_garaje": "S1",
+      "trastero": 47
     },
     {
       "id": "1B-4D",
@@ -316514,7 +316685,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 280000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 50,
+      "sotano_garaje": "S1",
+      "trastero": 46
     },
     {
       "id": "1B-4E",
@@ -316533,7 +316707,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 167000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 95,
+      "sotano_garaje": "S2",
+      "trastero": 67
     },
     {
       "id": "1B-4F",
@@ -316552,7 +316729,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 165000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 110,
+      "sotano_garaje": "S2",
+      "trastero": 72
     },
     {
       "id": "1B-4G",
@@ -316571,7 +316751,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 165000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 108,
+      "sotano_garaje": "S2",
+      "trastero": 74
     },
     {
       "id": "1B-5A",
@@ -316590,7 +316773,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 265000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 39,
+      "sotano_garaje": "S1",
+      "trastero": 9
     },
     {
       "id": "1B-5C",
@@ -316609,7 +316795,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 290000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 33,
+      "sotano_garaje": "S1",
+      "trastero": 43
     },
     {
       "id": "1B-5D",
@@ -316628,7 +316817,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 290000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 42,
+      "sotano_garaje": "S1",
+      "trastero": 44
     },
     {
       "id": "1B-5B",
@@ -316647,7 +316839,10 @@
       "dorm": 3,
       "banos": 2,
       "precio": 395000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 35,
+      "sotano_garaje": "S1",
+      "trastero": 37
     },
     {
       "id": "1B-5E",
@@ -316666,7 +316861,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 167000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 83,
+      "sotano_garaje": "S2",
+      "trastero": 62
     },
     {
       "id": "1B-5F",
@@ -316685,7 +316883,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 165000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 99,
+      "sotano_garaje": "S2",
+      "trastero": 75
     },
     {
       "id": "1B-5G",
@@ -316704,7 +316905,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 165000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 43,
+      "sotano_garaje": "S1",
+      "trastero": 42
     },
     {
       "id": "1B-6A",
@@ -316723,7 +316927,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 265000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 37,
+      "sotano_garaje": "S1",
+      "trastero": 10
     },
     {
       "id": "1B-6C",
@@ -316742,7 +316949,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 290000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 46,
+      "sotano_garaje": "S1",
+      "trastero": 48
     },
     {
       "id": "1B-6D",
@@ -316761,7 +316971,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 290000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 44,
+      "sotano_garaje": "S1",
+      "trastero": 41
     },
     {
       "id": "1B-6B",
@@ -316780,7 +316993,10 @@
       "dorm": 3,
       "banos": 2,
       "precio": 395000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 19,
+      "sotano_garaje": "S1",
+      "trastero": 31
     },
     {
       "id": "1B-6E",
@@ -316799,7 +317015,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 170000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 88,
+      "sotano_garaje": "S2",
+      "trastero": 65
     },
     {
       "id": "1B-6F",
@@ -316818,7 +317037,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 165000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 101,
+      "sotano_garaje": "S2",
+      "trastero": 70
     },
     {
       "id": "1B-6G",
@@ -316837,7 +317059,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 165000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 111,
+      "sotano_garaje": "S2",
+      "trastero": 80
     },
     {
       "id": "1B-AA",
@@ -316856,7 +317081,10 @@
       "dorm": 1,
       "banos": 1,
       "precio": 180000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 87,
+      "sotano_garaje": "S2",
+      "trastero": 64
     },
     {
       "id": "1B-AB",
@@ -316875,7 +317103,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 305000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 18,
+      "sotano_garaje": "S1",
+      "trastero": 30
     },
     {
       "id": "1B-AC",
@@ -316894,7 +317125,10 @@
       "dorm": 2,
       "banos": 2,
       "precio": 305000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 23,
+      "sotano_garaje": "S1",
+      "trastero": 33
     },
     {
       "id": "1B-AD",
@@ -316913,7 +317147,10 @@
       "dorm": 3,
       "banos": 2,
       "precio": 395000,
-      "estado": "LIBRE"
+      "estado": "LIBRE",
+      "garaje": 22,
+      "sotano_garaje": "S1",
+      "trastero": 32
     },
     {
       "id": "1B-AE",
@@ -316932,8 +317169,56 @@
       "dorm": 1,
       "banos": 1,
       "precio": 180000,
-      "estado": "RESERVADA"
+      "estado": "RESERVADA",
+      "garaje": 34,
+      "sotano_garaje": "S1",
+      "trastero": 39
     }
+  ],
+  "garajes_libres": [
+    { "garaje": 1, "sotano_garaje": "S1", "zona": "Zona 1A" },
+    { "garaje": 47, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 48, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 52, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 53, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 54, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 55, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 56, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 57, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 58, "sotano_garaje": "S1", "zona": "Zona 1B" },
+    { "garaje": 67, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 74, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 75, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 76, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 77, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 78, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 85, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 90, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 91, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 92, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 124, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 125, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 126, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 127, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 128, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 129, "sotano_garaje": "S2", "zona": "Zona 1A" },
+    { "garaje": 93, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 94, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 97, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 102, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 103, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 104, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 105, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 106, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 112, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 113, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 117, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 118, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 119, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 120, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 121, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 122, "sotano_garaje": "S2", "zona": "Zona 1B" },
+    { "garaje": 123, "sotano_garaje": "S2", "zona": "Zona 1B" }
   ],
   "roof": {
     "v": [
