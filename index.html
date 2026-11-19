@@ -2905,11 +2905,22 @@
       });
 
       /* ================= Sótanos: plazas de garaje y trasteros ================= */
-      const SOT = { root: null, levels: {}, cur: null, hidden: [], bays: [], center: [0, 0] };
+      const SOT = { root: null, levels: {}, cur: null, bays: [], center: [0, 0] };
       const SOT_ORDER = [null, 'S1', 'S2'];
       const sotBtn = document.createElement('button');
       sotBtn.id = 'sotBtn'; sotBtn.textContent = 'Sótano'; sotBtn.setAttribute('aria-pressed', 'false');
       $('#galBtn').after(sotBtn);
+      function sotLabel(main, sub, color) {
+        const c = document.createElement('canvas'); c.width = 256; c.height = 128; const g = c.getContext('2d');
+        g.fillStyle = 'rgba(15,20,28,.82)'; g.fillRect(6, 6, 244, 116);
+        g.fillStyle = color; g.font = '700 60px system-ui,sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
+        g.fillText(main, 128, sub ? 50 : 64);
+        if (sub) { g.fillStyle = '#e6e9ef'; g.font = '500 38px system-ui,sans-serif'; g.fillText(sub, 128, 100); }
+        const tex = new THREE.CanvasTexture(c);
+        const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, depthTest: false, transparent: true }));
+        sp.scale.set(2.6, 1.3, 1); sp.renderOrder = 10;
+        return sp;
+      }
       (function buildSotano() {
         const S = D.sotano; if (!S) { sotBtn.hidden = true; return; }
         const [x0, y0, x1, y1] = D.pb.plot;
@@ -2918,24 +2929,37 @@
         const glass = new THREE.Mesh(new THREE.PlaneGeometry(900, 900), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .08, depthWrite: false }));
         root.add(glass);
         const M = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: .9, metalness: 0 }, o));
-        const mSlab = M(0x9c9c95), mCol = M(0xb8b7ae), mFree = M(0x22C46B, { roughness: .5 }), mTaken = M(0x7a8190, { roughness: .7 }), mNone = M(0x3f4650), mStor = M(0xd9c49c);
+        const mSlab = M(0x6f737a), mCol = M(0xc4c3ba), mFree = M(0x22C46B, { roughness: .5 }), mTaken = M(0x9aa1ad, { roughness: .7 }), mNone = M(0x3f4650), mStor = M(0xd9c49c);
+        const lineFree = new THREE.LineBasicMaterial({ color: 0x0b5d30 }), lineTaken = new THREE.LineBasicMaterial({ color: 0x3b4150 }), lineNone = new THREE.LineBasicMaterial({ color: 0x9aa1ad });
         const takenBy = new Map(UNITS.filter(u => u.garaje != null).map(u => [String(u.garaje), u]));
-        const libres = new Set((D.garajes_libres || []).map(o => String(o.garaje)));
-        SOT.center = [(x0 + x1) / 2 - CX, (y0 + y1) / 2 - CY];
+        const libres = new Map((D.garajes_libres || []).map(o => [String(o.garaje), o]));
+        const bayGeo = new THREE.BoxGeometry(4.6, 2.2, .05), bayEdges = new THREE.EdgesGeometry(bayGeo), boxEdges = new THREE.EdgesGeometry(new THREE.BoxGeometry(2, 2, 2));
         for (const key of ['S1', 'S2']) {
           const z = LV[key], L = S[key], lg = new THREE.Group(); lg.visible = false; root.add(lg); SOT.levels[key] = lg;
-          const box = (w, d, h, m, x, y, zb, data) => { const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, d, h), m); mesh.position.set(x - CX, y - CY, zb + h / 2); mesh.receiveShadow = true; lg.add(mesh); if (data) { mesh.userData = data; SOT.bays.push(mesh); } return mesh; };
-          box(x1 - x0, y1 - y0, .35, mSlab, (x0 + x1) / 2, (y0 + y1) / 2, z - .35);
+          const place = (mesh, x, y, zb, h) => { mesh.position.set(x - CX, y - CY, zb + h / 2); lg.add(mesh); return mesh; };
+          const slab = new THREE.Mesh(new THREE.BoxGeometry(x1 - x0, y1 - y0, .35), mSlab);
+          place(slab, (x0 + x1) / 2, (y0 + y1) / 2, z - .35, .35).receiveShadow = true;
           for (const [d, x, y] of L.columnas) {
             const r = d / 2, cyl = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 2.8, 20), mCol);
             cyl.rotation.x = Math.PI / 2; cyl.position.set(x - CX, y - CY, z + 1.4); lg.add(cyl);
           }
           for (const [n, x, y] of L.garajes) {
-            const k = String(n), u = takenBy.get(k), free = libres.has(k);
-            const data = { tipo: 'garaje', n: k, estado: u ? 'asignado' : free ? 'libre' : 'sin datos', u };
-            box(5, 2.5, .04, free ? mFree : u ? mTaken : mNone, x, y, z, data);
+            const k = String(n), u = takenBy.get(k), libre = libres.get(k);
+            const data = { tipo: 'garaje', n: k, nivel: key, estado: u ? 'asignado' : libre ? 'libre' : 'sin datos', u, zona: libre ? libre.zona : null };
+            const bay = new THREE.Mesh(bayGeo, u ? mTaken : libre ? mFree : mNone);
+            bay.add(new THREE.LineSegments(bayEdges, u ? lineTaken : libre ? lineFree : lineNone));
+            bay.userData = data; SOT.bays.push(bay);
+            place(bay, x, y, z, .05);
+            const sub = u ? u.id : libre ? libre.zona.replace('Zona ', '') : '';
+            const lab = sotLabel(k, sub, u ? '#e6e9ef' : libre ? '#7ff0a8' : '#c9ced8');
+            lab.position.set(x - CX, y - CY, z + 1.6); lg.add(lab);
           }
-          for (const [m2, x, y] of L.trasteros) box(2.2, 2.2, 2.2, mStor, x, y, z, { tipo: 'trastero', m2 });
+          for (const [m2, x, y] of L.trasteros) {
+            const b = new THREE.Mesh(new THREE.BoxGeometry(2.0, 2.0, 2.0), mStor);
+            b.add(new THREE.LineSegments(boxEdges, lineTaken));
+            b.userData = { tipo: 'trastero', m2 }; SOT.bays.push(b);
+            place(b, x, y, z, 2.0);
+          }
         }
       })();
       const sotRay = new THREE.Raycaster();
@@ -2950,16 +2974,22 @@
         const r = stage.getBoundingClientRect(); tip.style.left = (ev.clientX - r.left) + 'px'; tip.style.top = (ev.clientY - r.top) + 'px';
         tip.innerHTML = d.tipo === 'trastero'
           ? `<b>Trastero</b>${fmtM2(d.m2)} m² · sin número en el plano`
-          : `<b>Garaje ${d.n}</b>${d.estado === 'asignado' ? 'asignado a ' + d.u.id : d.estado === 'libre' ? 'libre' : 'sin datos'}`;
+          : d.estado === 'asignado'
+            ? `<b>Garaje ${d.n}</b>asignado a ${d.u.id} (planta ${d.u.planta}, ${d.u.letra}) · ${SOT.levelName(d)}`
+            : d.estado === 'libre'
+              ? `<b>Garaje ${d.n}</b>libre · ${d.zona} · sin vivienda asociada`
+              : `<b>Garaje ${d.n}</b>sin datos`;
         tip.style.opacity = 1; canvas.style.cursor = 'pointer';
       }
+      SOT.levelName = d => (d.nivel === 'S1' ? 'sótano −1' : 'sótano −2');
       function setSotano(lvl) {
         if (!SOT.root) return;
+        if (SOT.cur == null && lvl) { SOT.hidden = world.children.filter(c => c !== SOT.root && c.visible); }
         SOT.cur = lvl;
         world.visible = !lvl;
         SOT.root.visible = !!lvl;
-        document.getElementById('tags').style.display = lvl ? 'none' : '';
         for (const k in SOT.levels) SOT.levels[k].visible = k === lvl;
+        document.getElementById('tags').style.display = lvl ? 'none' : '';
         sotBtn.setAttribute('aria-pressed', String(!!lvl));
         sotBtn.textContent = lvl ? (lvl === 'S1' ? 'Sótano −1 · siguiente' : 'Sótano −2 · salir') : 'Sótano';
         tip.style.opacity = 0; highlight(null);
