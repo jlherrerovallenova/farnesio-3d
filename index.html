@@ -1819,7 +1819,7 @@
           <button id="mReal" aria-pressed="false">Ver todos</button>
         </div>
         <div class="levels" id="levels" role="group" aria-label="Cortar por planta"></div>
-        <div class="seg"><button id="galBtn">Renders</button></div>
+        <div class="seg" id="sotSeg"></div>
       </div>
       <div class="tip" id="tip"></div>
       <div class="dock" id="dock">
@@ -1859,20 +1859,6 @@
             <div class="avlegend"><span><i style="background:#22A85E"></i>Libre</span><span><i
                   style="background:var(--paper);box-shadow:inset 0 0 0 1px var(--rule)"></i>Reservada</span><span>Pulsa
                 una casilla para ver la vivienda</span></div>
-          </div>
-          <div class="find2">
-            <div class="f2head">
-              <div>
-                <div class="eyebrow">Asistente de búsqueda</div><b>¿Cuál es tu vivienda?</b>
-                <p>Cuéntanos qué necesitas y ordenamos las <span id="f2n">18</span> viviendas libres por afinidad.</p>
-              </div>
-              <button class="f2go" id="openFinder">Empezar</button>
-            </div>
-            <div class="f2row"><span>¿Cuántos dormitorios?</span>
-              <div class="f2chips"><button data-d="1">1</button><button data-d="2">2</button><button data-d="3">3 o
-                  más</button></div>
-            </div>
-            <div class="f2peek" id="f2peek"></div>
           </div>
           <div class="frow"><span class="eyebrow">Dormitorios</span>
             <div class="chips" id="fDorm"></div>
@@ -1918,13 +1904,6 @@
           id="pvClose">Cerrar</button></span></header>
     <div class="pvscroll"><img id="pvImg" alt="Plano comercial"></div>
   </div>
-  <div class="gal" id="gal" hidden>
-    <header><span class="eyebrow" style="color:#bbb">Infografías del proyecto · imágenes orientativas</span><button
-        id="galClose">Cerrar</button></header>
-    <figure><img id="galImg" alt=""></figure>
-    <nav id="galNav"></nav>
-  </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
@@ -2908,7 +2887,7 @@
       const SOT = { cur: 'S1', open: false };
       const sotBtn = document.createElement('button');
       sotBtn.id = 'sotBtn'; sotBtn.textContent = 'Sótano'; sotBtn.setAttribute('aria-pressed', 'false');
-      $('#galBtn').after(sotBtn);
+      $('#sotSeg').appendChild(sotBtn);
       const sotPanel = document.createElement('div');
       sotPanel.id = 'sotPanel';
       Object.assign(sotPanel.style, { position: 'absolute', inset: '0', zIndex: '40', display: 'none', overflow: 'auto', padding: '14px 16px 18px', background: 'rgba(12,16,22,.97)', color: '#e6e9ef', fontFamily: 'system-ui,-apple-system,"Segoe UI",sans-serif' });
@@ -3438,8 +3417,8 @@
         f.querySelectorAll('.match').forEach(b => { b.onclick = () => select(b.dataset.id); b.onmouseenter = () => { if (!selected) highlight(byId[b.dataset.id]); }; b.onmouseleave = () => { if (!selected) highlight(null); }; });
         filtered = new Set(top.map(r => r.u.id)); paint();
       }
-      $('#openFinder').onclick = () => { showView('finder'); renderFinder(); $('#panel').scrollTop = 0; };
-      document.querySelectorAll('.f2chips button').forEach(b => b.onclick = () => { fq.dorm = +b.dataset.d; showView('finder'); renderFinder(); $('#panel').scrollTop = 0; });
+      
+      
       function renderPeek() {
         const el = $('#f2peek'); if (!el) return; const r = scoreUnits().slice(0, 3); const best = r.length ? r[0].sc : 1;
         $('#f2n').textContent = UNITS.filter(u => u.estado === 'LIBRE').length;
@@ -3481,15 +3460,9 @@
         $('#cmp').hidden = false; $('#cmp').scrollTop = 0;
       }
 
-      /* ================= Gallery ================= */
-      const shots = [['r1.jpg', 'Fachada oeste'], ['r2.jpg', 'Esquina'], ['r3.jpg', 'Fachada sur'], ['r4.jpg', 'Patio y piscina'], ['r5.jpg', 'Vista aérea']];
-      let gi = 0; const gal = $('#gal');
-      function showShot(i) { gi = (i + shots.length) % shots.length; $('#galImg').src = shots[gi][0]; $('#galImg').alt = shots[gi][1];[...$('#galNav').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === gi))); }
-      shots.forEach((s, i) => { const b = document.createElement('button'); b.textContent = s[1]; b.onclick = () => showShot(i); $('#galNav').appendChild(b); });
-      $('#galBtn').onclick = () => { gal.hidden = false; showShot(gi); };
-      $('#galClose').onclick = () => gal.hidden = true;
+      /* ================= Plan viewer ================= */
       $('#pvClose').onclick = () => $('#pv').hidden = true; $('#pvIn').onclick = () => zoomPlan(1.5); $('#pvOut').onclick = () => zoomPlan(1 / 1.5);
-      addEventListener('keydown', e => { if (!$('#pv').hidden && e.key === 'Escape') { $('#pv').hidden = true; return; } if (!$('#cmp').hidden && e.key === 'Escape') { $('#cmp').hidden = true; return; } if (gal.hidden) { if (e.key === 'Escape' && selected) deselect(); return; } if (e.key === 'Escape') gal.hidden = true; if (e.key === 'ArrowRight') showShot(gi + 1); if (e.key === 'ArrowLeft') showShot(gi - 1); });
+      addEventListener('keydown', e => { if (!$('#pv').hidden && e.key === 'Escape') { $('#pv').hidden = true; return; } if (!$('#cmp').hidden && e.key === 'Escape') { $('#cmp').hidden = true; return; } { if (e.key === 'Escape' && selected) deselect(); return; } if (e.key === 'Escape') gal.hidden = true; if (e.key === 'ArrowRight') showShot(gi + 1); if (e.key === 'ArrowLeft') showShot(gi - 1); });
 
       /* ================= Tools ================= */
       $('#mState').onclick = () => { mode = 'state'; $('#mState').setAttribute('aria-pressed', 'true'); $('#mReal').setAttribute('aria-pressed', 'false'); paint(); };
