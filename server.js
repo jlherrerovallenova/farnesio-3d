@@ -16,12 +16,14 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
+  req.on('error', (err) => console.error('Request error:', err));
+  res.on('error', (err) => console.error('Response error:', err));
+
   let reqPath = decodeURI(req.url.split('?')[0]);
   if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
   
   const filePath = path.join(__dirname, reqPath);
 
-  // Security check to prevent directory traversal
   if (!filePath.startsWith(__dirname)) {
     res.statusCode = 403;
     res.end('Forbidden');
@@ -46,6 +48,11 @@ const server = http.createServer((req, res) => {
   });
 });
 
+server.on('error', (err) => {
+  console.error('Server error:', err);
+});
+
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
+
