@@ -3169,7 +3169,7 @@
         const SUPABASE_KEY = 'sb_publishable_dF5BaCQvcaAD9uibQVtuzg_-7c3HafO';
         sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // 1. Carga inicial del inventario desde Supabase
+        // 1. Carga inicial del inventario desde Supabase (el CRM es la fuente de verdad)
         try {
           const { data, error } = await sb
             .from('inventory')
@@ -3178,9 +3178,21 @@
 
           if (data && data.length > 0) {
             const before = selected && selected.estado;
+
+            // Recopilar las viviendas que están disponibles en el CRM
+            const disponiblesSet = new Set();
             data.forEach(item => {
-              applyUnitStatus(item.portal, item.planta, item.letra, item.estado_vivienda);
+              if (item.estado_vivienda === 'DISPONIBLE') {
+                const u = findUnit(item.portal, item.planta, item.letra);
+                if (u) disponiblesSet.add(u.id);
+              }
             });
+
+            // En el edificio 3D, solo son LIBRES las que están DISPONIBLES en el CRM
+            UNITS.forEach(u => {
+              u.estado = disponiblesSet.has(u.id) ? 'LIBRE' : 'RESERVADA';
+            });
+
             recount(); buildTags(); paint(); renderList(); renderAvGrid(); renderPeek();
             if (selected && selected.estado !== before) renderFicha(selected);
           }
@@ -3199,8 +3211,9 @@
                 if (!item) return;
                 if (item.promocion === 'farnesio' || !item.promocion) {
                   const before = selected && selected.estado;
-                  const changed = applyUnitStatus(item.portal, item.planta, item.letra, item.estado_vivienda);
-                  if (changed) {
+                  const u = findUnit(item.portal, item.planta, item.letra);
+                  if (u) {
+                    u.estado = item.estado_vivienda === 'DISPONIBLE' ? 'LIBRE' : 'RESERVADA';
                     recount(); buildTags(); paint(); renderList(); renderAvGrid(); renderPeek();
                     if (selected && selected.estado !== before) renderFicha(selected);
                   }
