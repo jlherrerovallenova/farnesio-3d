@@ -2895,9 +2895,9 @@
       /* ================= Edificio de la parcela 12 (al otro lado de la calle Nadia Murad) ================= */
       (function buildParcela12() {
         const env = D.floors.T.envAll;
-        let xmin = Infinity, ymin = Infinity;
-        env.forEach(p => { for (let i = 0; i < p.length; i += 2) { xmin = Math.min(xmin, p[i]); ymin = Math.min(ymin, p[i + 1]); } });
-        const X0 = xmin + 2, YB = D.pb.plot[1] - 17;   // cara este de la parcela 12 al otro lado de la calle (calle de 12,5 m desde el borde del solar)
+        let xmin = Infinity, xmax = -Infinity, ymin = Infinity;
+        env.forEach(p => { for (let i = 0; i < p.length; i += 2) { xmin = Math.min(xmin, p[i]); xmax = Math.max(xmax, p[i]); ymin = Math.min(ymin, p[i + 1]); } });
+        const X0 = xmin + (xmax - xmin - 37) / 2, YB = D.pb.plot[1] - 17;   // 37 m centrados en el frente de nuestro edificio, a la altura de Lubens Farnesio   // cara este de la parcela 12 al otro lado de la calle (calle de 12,5 m desde el borde del solar)
         const vols = [[0, 14, 0, 10, 9.6], [8, 37, 0, 20, 15.6], [0, 12, 10, 26, 15.6], [30, 37, 20, 26, 12.6]];
         const mat = new THREE.MeshStandardMaterial({ color: 0xffa64d, roughness: .85, metalness: 0 });
         vols.forEach(([u0, u1, v0, v1, h]) => {
