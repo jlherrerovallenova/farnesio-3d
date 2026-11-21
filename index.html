@@ -2883,6 +2883,7 @@
         const u = SOT.open ? null : pickAt(ev); if (u) select(u.id);
       });
 
+      const NEIGHBORS = [];   // volumenes de los edificios colindantes (parcelas 21 y 12)
       /* ================= Edificio medianero (espejo del nuestro, parcela 21) ================= */
       (function buildMedianero() {
         const env = D.floors.T.envAll;
@@ -2890,7 +2891,7 @@
         env.forEach(p => { for (let i = 1; i < p.length; i += 2) ymax = Math.max(ymax, p[i]); });
         const mirror = env.map(p => p.map((v, i) => (i % 2 ? 2 * ymax - v : v)));
         const mat = new THREE.MeshStandardMaterial({ color: 0xe7e2d6, roughness: .9, metalness: 0, transparent: true, opacity: .32, depthWrite: false });
-        extrude(mirror.map(p => shapeFrom(p)), base(8), mat, 0);
+        NEIGHBORS.push(extrude(mirror.map(p => shapeFrom(p)), base(8), mat, 0));
       })();
       /* ================= Edificio de la parcela 12 (al otro lado de la calle Nadia Murad) ================= */
       (function buildParcela12() {
@@ -2899,11 +2900,24 @@
         env.forEach(p => { for (let i = 0; i < p.length; i += 2) { xmin = Math.min(xmin, p[i]); xmax = Math.max(xmax, p[i]); ymin = Math.min(ymin, p[i + 1]); } });
         const X0 = xmax - 37, YB = D.pb.plot[1] - 17;   // extremo sur de la parcela 12 alineado con el extremo sur de nuestro edificio   // cara este de la parcela 12 al otro lado de la calle (calle de 12,5 m desde el borde del solar)
         const vols = [[0, 14, 0, 10, 9.6], [8, 37, 0, 20, 15.6], [0, 12, 10, 26, 15.6], [30, 37, 20, 26, 12.6]];
-        const mat = new THREE.MeshStandardMaterial({ color: 0xffa64d, roughness: .85, metalness: 0 });
+        const mat = new THREE.MeshStandardMaterial({ color: 0xffa64d, roughness: .85, metalness: 0, transparent: true, opacity: .32, depthWrite: false });
         vols.forEach(([u0, u1, v0, v1, h]) => {
           const pts = [X0 + u0, YB - v0, X0 + u1, YB - v0, X0 + u1, YB - v1, X0 + u0, YB - v1];
-          extrude([shapeFrom(pts)], h, mat, 0);
+          NEIGHBORS.push(extrude([shapeFrom(pts)], h, mat, 0));
         });
+      })();
+      /* ================= Botón para ocultar los colindantes ================= */
+      (function neighbourToggle() {
+        const b = document.createElement('button');
+        b.id = 'nbBtn'; b.textContent = 'Ocultar colindantes'; b.setAttribute('aria-pressed', 'false');
+        document.getElementById('sotSeg').appendChild(b);
+        b.onclick = () => {
+          const hide = b.getAttribute('aria-pressed') !== 'true';
+          NEIGHBORS.forEach(m => { m.visible = !hide; });
+          b.setAttribute('aria-pressed', String(hide));
+          b.textContent = hide ? 'Mostrar colindantes' : 'Ocultar colindantes';
+          needsRender = true;
+        };
       })();
       /* ================= Sótanos: planos en PDF ================= */
       const SOT = { open: false, cur: 0 };
