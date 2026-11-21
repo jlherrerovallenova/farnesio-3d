@@ -2597,7 +2597,27 @@
             case 'sink': B('oak', 0, 0, .32, L, W, .5, .015); B('ceramic', 0, 0, .82, L + .02, W + .02, .06, .025); C('steel', 0, wall * (W / 2 - .08), .88, .012, .012, .18, 8); B('mirror', 0, wall * (W / 2 + .005), 1.12, L * .82, .015, .78, .04); break;
           }
         });
-        D.floors[key].rooms.filter(r => r.n === 'Armario').forEach(r => { const g = new THREE.ExtrudeGeometry(shapeFrom(r.pts), { depth: 2.3, bevelEnabled: false }); bagFor(unitGroups[r.u] ? r.u : '_rest').push('wardrobe', g); });
+        const inPoly = (pts, x, y) => { let c = false; for (let i = 0, j = pts.length - 2; i < pts.length; j = i, i += 2) { const xi = pts[i], yi = pts[i + 1], xj = pts[j], yj = pts[j + 1]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+        D.floors[key].rooms.filter(r => r.n === 'Armario').forEach(r => {
+          const g = new THREE.ExtrudeGeometry(shapeFrom(r.pts), { depth: 2.3, bevelEnabled: false }); bagFor(unitGroups[r.u] ? r.u : '_rest').push('wardrobe', g);
+          // puertas de los armarios: dos hojas en el lado del armario que da a la habitación
+          const P = r.pts, others = D.floors[key].rooms.filter(o => o.u === r.u && o.n !== 'Armario');
+          let best = null;
+          for (let i = 0; i < P.length / 2; i++) {
+            const ax = P[2 * i], ay = P[2 * i + 1], bx = P[(2 * i + 2) % P.length], by = P[(2 * i + 3) % P.length];
+            const L = Math.hypot(bx - ax, by - ay); if (L < .6) continue;
+            const nx = (by - ay) / L, ny = -(bx - ax) / L;
+            const hitsOn = s => { let h = 0; for (let k = 1; k < 10; k++) { const tt = k / 10, px = ax + (bx - ax) * tt + nx * s * .15, py = ay + (by - ay) * tt + ny * s * .15; if (others.some(o => inPoly(o.pts, px, py))) h++; } return h; };
+            const hits = Math.max(hitsOn(1), hitsOn(-1));
+            if (hits > 0 && (!best || hits > best.hits)) best = { ax, ay, bx, by, L, hits };
+          }
+          if (!best) return;
+          const { ax, ay, bx, by, L } = best, dx = (bx - ax) / L, dy = (by - ay) / L, ang = Math.atan2(dy, dx), wb = bagFor(unitGroups[r.u] ? r.u : '_rest');
+          for (const [s0, s1] of [[0, .5], [.5, 1]]) {
+            const mx = ax + (bx - ax) * (s0 + s1) / 2 - CX, my = ay + (by - ay) * (s0 + s1) / 2 - CY;
+            wb.box('wardrobe', mx, my, SLAB + .02, L / 2 - .01, .04, DOOR_H - .05, ang);
+          }
+        });
         Object.entries(bags).forEach(([u, bag]) => bag.build(u === '_rest' ? restGroup : unitGroups[u].furn, FM));
       }
 
