@@ -52,7 +52,13 @@ server.on('error', (err) => {
   console.error('Server error:', err);
 });
 
-server.listen(PORT, () => {
+process.on('uncaughtException', (err) => console.error('Uncaught Exception:', err));
+process.on('unhandledRejection', (reason, promise) => console.error('Unhandled Rejection:', reason));
+process.on('exit', (code) => console.log('Process exit with code:', code));
+process.on('SIGINT', () => { console.log('SIGINT'); process.exit(0); });
+process.on('SIGTERM', () => { console.log('SIGTERM'); process.exit(0); });
+
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
 
